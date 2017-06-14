@@ -28,7 +28,13 @@ public class MainScreen extends Application{
 		  Label topLabel = new Label("FX Screen !");
 		  TextField textField = new TextField("0");
 		  Button clickButton = new Button("Click");
+
+          clickButton.setOnAction(
+        		  e -> {topLabel.setText("Inputted \"" + textField.getText() + "\"");}
+        		  );
 		  
+          //参考:匿名クラスを使った場合の実装
+		  /*		  
 		  clickButton.setOnAction(new EventHandler<ActionEvent>(){
 			  
 			  @Override
@@ -37,7 +43,7 @@ public class MainScreen extends Application{
 				  topLabel.setText(msg);
 			  }
 		  });
-		  		  
+*/		  		  
 		  BorderPane rootPane = new BorderPane();
 		  
 		  rootPane.setTop(topLabel);
