@@ -4,7 +4,12 @@ package main.jp.co.java.app.screen;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.control.Button;
+import javafx.event.EventHandler;
+import javafx.event.ActionEvent;
 
 public class MainScreen extends Application{
 	
@@ -20,8 +25,25 @@ public class MainScreen extends Application{
 		
 	  try{
 		  
-		  BorderPane root = new BorderPane();
-		  Scene scene = new Scene(root,400,400);
+		  Label topLabel = new Label("FX Screen !");
+		  TextField textField = new TextField("0");
+		  Button clickButton = new Button("Click");
+		  
+		  clickButton.setOnAction(new EventHandler<ActionEvent>(){
+			  
+			  @Override
+			  public void handle(ActionEvent e){
+				  String msg = "Inputted \"" + textField.getText() + "\"";
+				  topLabel.setText(msg);
+			  }
+		  });
+		  		  
+		  BorderPane rootPane = new BorderPane();
+		  
+		  rootPane.setTop(topLabel);
+		  rootPane.setCenter(textField);
+		  rootPane.setBottom(clickButton);
+		  Scene scene = new Scene(rootPane,200,200);
 		  primStage.setScene(scene);
 		  primStage.show();
 		  
